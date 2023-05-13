@@ -1,0 +1,228 @@
+/* *{
+  /* border: 2px solid red; */
+  /* background: rgb(243, 243, 243); */
+/* } */
+
+
+#start-button{
+  margin-left:5%;
+  width: 20%;
+  height: 20%;
+  font-size: 2vw;
+}
+
+header{
+  width: 80%;
+  margin: auto;
+}
+
+header h1{
+  margin-top: 4%;
+  margin-bottom: 2%;
+  text-align: center;
+  font-size: 4vw;
+}
+
+#search-form{
+  margin-bottom: 10%;
+  width: 80%;
+  margin: auto;
+
+}
+
+.form-control{
+  margin-bottom: 1%;
+}
+
+#playlist-picker{
+  width: 90%;
+  margin: auto;
+  font-size: 3vw;
+}
+
+#search-button-container{
+  width: 90%;
+  margin: auto;
+  padding-bottom: 2%;
+  margin-bottom: 2%;
+  border-bottom: 2px solid black
+}
+
+
+.input-group button {
+    /* Add seperation between input and submit button */
+    margin-left: 10px;
+  }
+
+
+
+  #submit-button{
+    height: 100%;
+  }
+
+
+  #lyrics-display{
+    /* width: 90%; */
+    margin: auto;
+    margin-bottom: 3%;
+  }
+
+  #guessing-wrapper{
+    /* width: 90%; */
+    margin: auto;
+  }
+
+  #guess-submission-wrapper{
+    width: 60%;
+    margin: auto;
+    margin-bottom: 2%;
+  }
+
+  #result{
+    text-align: center;;
+  }
+
+  footer{
+    margin-top: 20%;
+    margin-left: 5%;
+  }
+
+
+
+  /* Styling lyrics */
+  #lyrics-display{
+    font-size: 2vw;
+    font-weight: bold;
+    margin-left: 5%;
+  }
+
+  #game-wrapper{
+    width: 90%;
+    margin: auto;
+
+  }
+
+  .result-text {
+    font-size: 2vw !important;
+
+  }
+
+
+  #play-again-button{
+    display: block;
+  }
+
+  #album-image{
+    width: 15vw;
+    display: block;
+    margin-bottom: 5%;
+    margin-top: 5%;
+  }
+
+
+  h3{
+    font-size: 3vw !important;
+  }
+
+  ol li{
+    font-size: 2vw;
+  }
+
+  #description-text{
+    font-size: 2vw;
+  }
+
+
+
+
+
+  /* Mobile */
+@media only screen and (max-width: 767px) {
+  #lyrics-display {
+    font-size: 3.5vw;
+  }
+
+  header h1{
+    font-size: 10vw;
+  }
+  .result-text {
+    font-size: 4vw !important;
+  }
+
+  #album-image{
+    width: 30vw;
+  }
+
+  h3{
+    font-size: 5vw !important;
+  }
+
+  ol li{
+    font-size: 4vw;
+  }
+
+  #description-text{
+    font-size: 4vw;
+  }
+  #start-button{
+    font-size: 4vw;
+    width: 40%;
+  }
+
+  #guess-input{
+    /* width: 50vw; */
+    display: block;
+   
+  }
+
+  #submit-button{
+    width: 40%;
+    height: 2% !important;
+  }
+
+
+
+}
+
+/* Tablet */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #lyrics-display {
+    font-size: 2.7vw;
+  }
+
+  #album-image{
+    width: 30vw;
+  }
+
+  h3{
+    font-size: 4vw !important;
+  }
+
+  ol li{
+    font-size: 3vw;
+  }
+
+  #description-text{
+    font-size: 3vw;
+  }
+  #start-button{
+    font-size: 3vw;
+    width: 30%;
+  }
+
+  header h1{
+    font-size: 8vw;
+  }
+
+}
+
+
+
+
+/* Testing */
+
+#suggestions-container {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}

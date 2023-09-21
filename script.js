@@ -1,5 +1,4 @@
-  //Make the search button work
-
+// Enums
   const artsitColumn = 3;
   const songColumn = 1;
   document.getElementById("start-button").addEventListener("click", initialNewGame);
@@ -27,7 +26,7 @@ function initialNewGame(){
 function searchLyrics() {
     var songName = document.getElementById("mus").value;
     var artistName = document.getElementById("artist").value;
-    console.log("searchLyrics function called");
+    //console.log("searchLyrics function called");
     lyricLoader(artistName, songName);
 
 
@@ -68,36 +67,35 @@ function loadPlaylist(){
   } 
 
 
-//   Pull the lyrics
+//   Pull the lyrics from Vagalume's API
 var parsedLyrics;
 var correctAnswer;
 var correctArtist;
 function lyricLoader(artist, songName) {
-  console.log("lyricLoader function called");
+  //console.log("lyricLoader function called");
     var xhttp = new XMLHttpRequest();
     var url = "https://api.vagalume.com.br/search.php?art=" + artist + "&mus=" + songName;
     xhttp.onreadystatechange = function() {
-    //   console.log("onreadystate called");
-    //   console.log(url);
+
+      //If successfully found, display text
       if (this.readyState == 4 && this.status == 200) {
         var lyricsObject = JSON.parse(this.responseText);
-        // console.log("lyrics object vv");
-        console.log(lyricsObject);
-        // displayLyrics(lyricsObject.mus[0].text);
+        //console.log(lyricsObject);
+
+        //If song is not found, recursively call loadPlaylist -> lyricLoader loop until song is found
         if(lyricsObject.type == "notfound" || lyricsObject.type == "song_notfound"){
-            console.log("Song not found, trying next song");
+            //console.log("Song not found, trying next song");
             loadPlaylist();
-            
         }
+
         var lyrics = lyricsObject.mus[0].text;
-        // console.log(lyrics);
         parsedLyrics = parseLyrics(lyrics);
         correctAnswer = lyricsObject.mus[0].name;
         correctArtist = lyricsObject.art.name;
         document.getElementById("lyrics-display").innerHTML = parsedLyrics[0];
       }
       else {
-        console.log(this.readyState)
+        //console.log(this.readyState)
     }
 
   }
@@ -108,31 +106,21 @@ function lyricLoader(artist, songName) {
 
 
 
-// Something to parse lyrics line by line
-
+//Creates an array where each index is a line of the song lyrics
 function parseLyrics(lyrics){
-  /*
-    Idea:
-    1. Create an array that each object will be a line of the lyrics
-    2. Go through the main lyrics object, make a string of parsing the lyrics and then push that into the array/list
-    Edit: apparently this is exactly what the "split" method does
-  */
-//   console.log("running parseLyrics");
-  var lyricsArray = lyrics.split("\n");
-//   console.log(lyricsArray);
-  return lyricsArray;
 
+  var lyricsArray = lyrics.split("\n");
+  return lyricsArray;
 }
 
 
 //guessing mechanism
 var guess = 1;
-var lineToAdd = 1; //need to make this different because some lines are wrong
+var lineToAdd = 1;
 
 document.getElementById("submit-button").addEventListener("click", checkGuess);
 
 function checkGuess(){
-//   console.log("running checkGuess")
   var userGuess = document.getElementById("guess-input").value;
   console.log("user guess: " + userGuess);
   console.log("correct guess: " + correctAnswer);
@@ -144,10 +132,10 @@ function checkGuess(){
     endGame();
   }
   else{
-    console.log("Wrong guess functionality: adding another line");
+    //console.log("Wrong guess functionality: adding another line");
     //Need to get the parsedLyrics object from lyricLoader function
     while (parsedLyrics[lineToAdd] == "" || parsedLyrics[lineToAdd].includes("[") || parsedLyrics[lineToAdd].toLowerCase().includes("verse")){
-      console.log("Behavior: skipping this line because it is blank or a verse heading");
+      //console.log("Behavior: skipping this line because it is blank or a verse heading");
       lineToAdd++;
     }
 
@@ -185,7 +173,6 @@ function endGame(){
     playAgainButton.id="play-again-button";
     const albumImage = document.createElement("img");
     albumImage.src = albumArtLink;
-    // albumImage.classList.add("img-fluid");
     albumImage.id="album-image";
 
     gameWrapper.appendChild(albumImage);
@@ -221,7 +208,7 @@ var albumArtLink; //might have to put this into the lyricLoader function if it i
     // Parse the CSV data
     const parsedData = Papa.parse(csvData);
     randomIndex = Math.floor(Math.random() * parsedData.data.length) + 1;
-    console.log("running searchLyrics Data with index: " + randomIndex);
+    //console.log("running searchLyrics Data with index: " + randomIndex);
     var artistName = parsedData.data[randomIndex][artsitColumn];
     var songName = parsedData.data[randomIndex][songColumn];
     albumArtLink = parsedData.data[randomIndex][9];
@@ -291,45 +278,6 @@ function newGame(){
 
 
 /*
-If time additions
+Next feature: Autocomplete suggestions when typing in a song
 
-Autocomplete suggestions: https://www.youtube.com/watch?v=MO3qC1ouGiA&ab_channel=CodingArtist
-
-
-*/
-
-
-// let inputField = document.getElementById("guess-input");
-
-
-// inputField.addEventListener("input", autofill);
-
-
-// function autofill(){
-//     let inputValue = inputField.value.toLowerCase();
-
-//     let matchingNames = names.filter(function(name) {
-//         return name.toLowerCase().startsWith(inputValue);
-//     });
-
-
-//     let suggestionsHtml = "";
-
-//     matchingNames.forEach(function(name) {
-//     suggestionsHtml += "<div class="suggestion">" + name + "</div>;
-//     });
-
-//     let suggestionsContainer = document.getElementById("suggestions-container");
-
-//     suggestionsContainer.innerHTML = suggestionsHtml;
-
-//     suggestionsContainer.style.display = "block";
-
-//     let suggestionElements = document.getElementsByClassName("suggestion");
-
-//     for (let i = 0; i < suggestionElements.length; i++) {
-//     suggestionElements[i].addEventListener('click', function() {
-     
-//      });
-//     }
-// }
+Autocomplete suggestions: https://www.youtube.com/watch?v=MO3qC1ouGiA&ab_channel=CodingArtist*/

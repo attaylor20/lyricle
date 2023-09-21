@@ -4,6 +4,12 @@ Lyricle is a fun and engaging lyric guessing game inspired by the popular word g
 ## How to Play
 Go to 
 
+<details>
+  <summary>Spoiler: How to cheat</summary>
+  
+  If you want to see the success state and are having troubles guessing any songs, the correct song is logged in the the console after each guess
+</details>
+
 ## How it was made
 Lyricle was built using vanilla JavaScript interacting with Vagalume and Spotify's API via AJAX calls to pull song lyrics, artwork, and song previews.
 Lyrics are provided by the [Vagalume API](https://api.vagalume.com.br/)

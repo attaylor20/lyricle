@@ -2,12 +2,12 @@
 Lyricle is a fun and engaging lyric guessing game inspired by the popular word game, Wordle. In this game, players are tasked with deciphering the lyrics of a song within a limited number of attempts. It's a test of your lyrical knowledge and deduction skills. Are you up for the challenge?
 
 ## How to Play
-Go to 
+Lyricle website: [https://attaylor20.github.io/lyricle/](https://attaylor20.github.io/lyricle/)
 
 <details>
   <summary>Spoiler: How to cheat</summary>
   
-  If you want to see the success state and are having troubles guessing any songs, the correct song is logged in the the console after each guess
+  The correct song is logged in the the browser console after each guess
 </details>
 
 ## How it was made

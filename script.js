@@ -176,6 +176,18 @@ function endGame(){
     albumImage.id="album-image";
 
     gameWrapper.appendChild(albumImage);
+    const songPreview = document.createElement("div");
+    songPreview.classList.add("song-preview");
+    const songPreviewAudioWrapper = document.createElement("audio");
+    songPreview.appendChild(songPreviewAudioWrapper);
+    songPreviewAudioWrapper.controls = "controls";
+    songPreviewAudioWrapper.autoplay = "true";
+    const songPreviewAudio = document.createElement("source");
+    songPreviewAudio.src = songPreviewLink;
+    songPreviewAudio.type = "audio/mpeg";
+    songPreviewAudioWrapper.appendChild(songPreviewAudio);
+    gameWrapper.appendChild(songPreview);
+
     gameWrapper.appendChild(playAgainButton);
     playAgainButton.addEventListener("click", newGame);
 
@@ -201,7 +213,8 @@ function endGame(){
 
 
 var albumArtLink; //might have to put this into the lyricLoader function if it is changing dynamically too much
- function getData(playlist){
+var songPreviewLink; 
+function getData(playlist){
   fetch(playlist) //will make this a varaible to be inserted by a parameter depending on the playlist chosen
   .then(response => response.text())
   .then(csvData => {
@@ -212,6 +225,8 @@ var albumArtLink; //might have to put this into the lyricLoader function if it i
     var artistName = parsedData.data[randomIndex][artsitColumn];
     var songName = parsedData.data[randomIndex][songColumn];
     albumArtLink = parsedData.data[randomIndex][9];
+    songPreviewLink = parsedData.data[randomIndex][13];
+
     lyricLoader(artistName, songName);
 
 

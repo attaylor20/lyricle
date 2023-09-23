@@ -40,7 +40,8 @@ header h1{
   margin: auto;
   padding-bottom: 2%;
   margin-bottom: 2%;
-  border-bottom: 2px solid black
+  border-bottom: 2px solid black;
+  text-align: left;
 }
 
 
@@ -92,6 +93,7 @@ header h1{
   #game-wrapper{
     width: 90%;
     margin: auto;
+    text-align: center;
 
   }
 
@@ -102,12 +104,12 @@ header h1{
 
 
   #play-again-button{
-    display: block;
+    /* display: block; */
   }
 
   #album-image{
     width: 15vw;
-    display: block;
+    /* display: block; */
     margin-bottom: 5%;
     margin-top: 5%;
   }
